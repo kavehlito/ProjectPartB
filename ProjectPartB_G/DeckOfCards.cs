@@ -37,7 +37,11 @@ namespace ProjectPartB_B1
         }
         public void Sort()
         {
-            cards.OrderBy(v => v.Color).ThenBy(c => c.Value).ToList();
+            cards.Sort(delegate (PlayingCard x, PlayingCard y)
+            {
+                int res = x.Value.CompareTo(y.Value);
+                return res != 0 ? res : x.Color.CompareTo(y.Color);
+            });
         }
         #endregion
 
