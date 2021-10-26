@@ -52,8 +52,8 @@ namespace ProjectPartB_B1
             {
                 Console.WriteLine("How many cards do you want to deal to each player? (1-5 or Q to Quit)");
                 string userNrCardsInput = Console.ReadLine();
-                int.TryParse(userNrCardsInput, out NrOfCards);
-                if (userNrCardsInput == "q" || userNrCardsInput == "Q")
+                int.TryParse(userNrCardsInput.Trim(), out NrOfCards);
+                if (userNrCardsInput.Trim() == "q" || userNrCardsInput.Trim() == "Q")
                 {
                     Environment.Exit(0);
                 }
@@ -78,8 +78,8 @@ namespace ProjectPartB_B1
             {
                 Console.WriteLine("How many rounds do you want to play? (1-5 or Q to Quit)");
                 string userNrRoundsInput = Console.ReadLine();
-                int.TryParse(userNrRoundsInput, out NrOfRounds);
-                if (userNrRoundsInput == "q" || userNrRoundsInput == "Q")
+                int.TryParse(userNrRoundsInput.Trim(), out NrOfRounds);
+                if (userNrRoundsInput.Trim() == "q" || userNrRoundsInput.Trim() == "Q")
                 {
                     Environment.Exit(0);
                 }
