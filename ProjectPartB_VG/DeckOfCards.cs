@@ -13,34 +13,60 @@ namespace ProjectPartB_B2
         protected List<PlayingCard> cards = new List<PlayingCard>(MaxNrOfCards);
 
         public PlayingCard this[int idx] => null;
-        public int Count => 0;
+        public int Count => cards.Count;
         #endregion
 
         #region ToString() related
         public override string ToString()
         {
-            return "Should be deck of cards in short notation";
+            string sRet = "";
+            for (int i = 0; i < Count; i++)
+            {
+                sRet += $"{cards[i].ToString(),-9}";
+                if ((i + 1) % 13 == 0)
+                    sRet += "\n";
+
+            }
+            return sRet;
         }
         #endregion
 
         #region Shuffle and Sorting
         public void Shuffle()
-        { }
+        {
+            var rnd = new Random();
+            cards = cards.OrderBy(x => rnd.Next()).ToList();
+        }
         public void Sort()
-        { }
+        {
+            cards.Sort(delegate (PlayingCard x, PlayingCard y)
+            {
+                int res = x.Value.CompareTo(y.Value);
+                return res != 0 ? res : x.Color.CompareTo(y.Color);
+            });
+        }
         #endregion
 
         #region Creating a fresh Deck
-        public virtual void Clear()
-        { }
+        public virtual void Clear() => cards.Clear();
         public void CreateFreshDeck()
-        { }
+        {
+            for (PlayingCardColor c = PlayingCardColor.Clubs; c <= PlayingCardColor.Spades; c++)
+            {
+                for (PlayingCardValue v = PlayingCardValue.Two; v <= PlayingCardValue.Ace; v++)
+                {
+                    cards.Add(new PlayingCard { Color = c, Value = v });
+                }
+            }
+        }
         #endregion
 
         #region Dealing
         public PlayingCard RemoveTopCard()
         {
-            return null;
+            PlayingCard card = cards.First();
+            cards = cards.Skip(1).ToList();
+            return card;
         }
         #endregion
     }

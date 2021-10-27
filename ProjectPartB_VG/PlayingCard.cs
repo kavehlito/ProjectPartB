@@ -26,7 +26,14 @@ namespace ProjectPartB_B2
 			//https://en.wikipedia.org/wiki/Playing_cards_in_Unicode
 			get
 			{
-				return "Short Description of the card";
+				char c = Color switch
+				{
+					PlayingCardColor.Clubs => '\u2663',
+					PlayingCardColor.Spades => '\u2660',
+					PlayingCardColor.Hearts => '\u2665',
+					PlayingCardColor.Diamonds => '\u2666'
+				};
+				return $"{c} {Value.ToString()}";
 			}
 		}
 

@@ -15,8 +15,7 @@ namespace ProjectPartB_B1
 		//Need only to compare value in the project
 		public int CompareTo(PlayingCard card1)
         {
-			Value.CompareTo(card1.Value);
-			return 0;
+			return Value.CompareTo(card1.Value);
         }
 		#endregion
 

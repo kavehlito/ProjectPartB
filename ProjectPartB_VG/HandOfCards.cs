@@ -9,25 +9,12 @@ namespace ProjectPartB_B2
     class HandOfCards : DeckOfCards, IHandOfCards
     {
         #region Pick and Add related
-        public virtual void Add(PlayingCard card)
-        { }
+        public virtual void Add(PlayingCard card) => cards.Add(card);
         #endregion
 
         #region Highest Card related
-        public PlayingCard Highest
-        {
-            get
-            {
-               return null;
-            }
-         }
-        public PlayingCard Lowest
-        {
-            get
-            {
-               return null;
-            }
-        }
+        public PlayingCard Highest => cards.Max();
+        public PlayingCard Lowest => cards.Min();
         #endregion
     }
 }

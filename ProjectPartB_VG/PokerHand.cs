@@ -61,7 +61,7 @@ namespace ProjectPartB_B2
                 return false;
             }
         }
-        private bool IsPair => false;
+        private bool IsPair => this[0] == this[1];
 
         public PokerRank DetermineRank()
         {
