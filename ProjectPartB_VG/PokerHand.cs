@@ -5,13 +5,11 @@ namespace ProjectPartB_B2
     class PokerHand : HandOfCards
     {
         #region Clear
-        public override void Clear()
-        { }
+        public override void Clear() => cards.Clear();
         #endregion
 
         #region Remove and Add related
-        public override void Add(PlayingCard card)
-        { }
+        public override void Add(PlayingCard card) => cards.Add(card);
         #endregion
 
         #region Poker Rank related
@@ -33,17 +31,25 @@ namespace ProjectPartB_B2
         {
             lastValueIdx = 0;
             HighCard = null;
-            return 0; 
+            return HighCard.Value.CompareTo(HighCard.Value); 
         }
         private bool IsSameColor(out PlayingCard HighCard)
         {
             HighCard = null;
-            return false;
+            return HighCard.Color == HighCard.Color;
         }
         private bool IsConsecutive(out PlayingCard HighCard)
         {
             HighCard = null;
-            return false;
+            var prevDice = HighCard.Value;
+            for (int i = 1; i < Count; i++)
+            {
+                if (HighCard.Value == prevDice + 1)
+                    prevDice = HighCard.Value;
+                else
+                    return false;
+            }
+            return true;
         }
 
         //Hint: Worker Properties to examine each rank
@@ -61,7 +67,7 @@ namespace ProjectPartB_B2
                 return false;
             }
         }
-        private bool IsPair => this[0] == this[1];
+        private bool IsPair => NrSameValue();
 
         public PokerRank DetermineRank()
         {

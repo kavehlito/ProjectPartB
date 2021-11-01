@@ -15,7 +15,12 @@ namespace ProjectPartB_B2
 		//Need compare value and color in poker. If values are equal, color determines highest card
 		public int CompareTo(PlayingCard card1)
         {
-			return 0;
+            if (card1.Value.CompareTo(card1.Value) != 0)
+            {
+			return card1.CompareTo(card1);
+            }
+			else 
+				return card1.Color.CompareTo(card1.Color);
         }
 		#endregion
 
