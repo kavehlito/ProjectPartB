@@ -16,15 +16,25 @@ namespace ProjectPartB_B2
             Console.WriteLine(myDeck);
 
             Console.WriteLine($"\nA shuffled deck with {myDeck.Count} cards:");
-            myDeck.Shuffle();
+            // myDeck.Shuffle();
             Console.WriteLine(myDeck);
 
             PokerHand Player = new PokerHand();
-            while (myDeck.Count > 5)
+            myDeck.Reverse();
+            while (myDeck.Count >= 5)
             {
                 //Your code to Give 5 cards to the player and determine the rank
                 //Continue for as long as the deck has at least 5 cards 
+                for (int i = 0; i < 5; i++)
+                {
+                    Player.Add(myDeck.RemoveTopCard());
+                }
+                Console.WriteLine($"Player Hand: {Player}");
+                Player.DetermineRank();
+                Console.WriteLine($"Rank is {Player.Rank} with the rank-high-card {Player.Highest}");
+                Console.WriteLine($"The Deck has {myDeck.Count} cards left\n");
+                Player.Clear();
             }
         }
     }
- }
+}

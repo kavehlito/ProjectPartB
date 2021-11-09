@@ -32,6 +32,10 @@ namespace ProjectPartB_B2
         /// Sort the deck of cards using List<T> Sort()>
         /// </summary>
         public void Sort();
+        /// <summary>
+        /// Reverses the order of the List
+        /// </summary>
+        public void Reverse();
 
         /// <summary>
         /// Empties the deck of cards so no cards in the deck

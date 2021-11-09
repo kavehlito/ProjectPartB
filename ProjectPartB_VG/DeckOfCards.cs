@@ -45,6 +45,7 @@ namespace ProjectPartB_B2
                 return res != 0 ? res : x.Color.CompareTo(y.Color);
             });
         }
+        public void Reverse() => cards.Reverse();
         #endregion
 
         #region Creating a fresh Deck

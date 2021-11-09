@@ -14,7 +14,7 @@ namespace ProjectPartB_B1
             Console.WriteLine($"\nA sorted deck with {myDeck.Count} cards:");
             myDeck.Sort();
             Console.WriteLine(myDeck);
-            
+
             Console.WriteLine($"\nA shuffled deck with {myDeck.Count} cards:");
             myDeck.Shuffle();
             Console.WriteLine(myDeck);
