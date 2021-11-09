@@ -95,12 +95,12 @@
             get
             {
                 int lastValueIdx;
-                int lastValueIdx2;
                 int counter;
+                int lastValueIdx2;
                 int counter2;
                 NrSameValue(0, out lastValueIdx, out counter, out _rankHigh);
                 NrSameValue(lastValueIdx + 1, out lastValueIdx2, out counter2, out _rankHigh);
-                if (counter == 1 && counter == 2 || counter == 2 && counter2 == 1)
+                if (counter == 1 && counter2 == 2 || counter == 2 && counter2 == 1)
                 {
                     return true;
                 }
@@ -128,8 +128,8 @@
             get
             {
                 int lastValueIdx;
-                int lastValueIdx2;
                 int counter;
+                int lastValueIdx2;
                 int counter2;
                 NrSameValue(0, out lastValueIdx, out counter, out _rankHighPair2);
                 NrSameValue(lastValueIdx + 1, out lastValueIdx2, out counter2, out _rankHighPair2);
