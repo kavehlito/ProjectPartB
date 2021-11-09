@@ -12,7 +12,7 @@ namespace ProjectPartB_B2
         protected const int MaxNrOfCards = 52;
         protected List<PlayingCard> cards = new List<PlayingCard>(MaxNrOfCards);
 
-        public PlayingCard this[int idx] => null;
+        public PlayingCard this[int idx] => cards[idx];
         public int Count => cards.Count;
         #endregion
 

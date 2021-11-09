@@ -29,24 +29,28 @@
         {
             lastValueIdx = 0;
             counter = 0;
-            for (int i = firstValueIdx; i < 5; i++)
+            for (int i = 0; i < 4; i++)
             {
-                if (this[i].Value == this[4].Value)
+                if (this[firstValueIdx].Value == this[i + 1].Value)
                 {
                     lastValueIdx = i;
                     counter++;
                 }
+                if (this[firstValueIdx].Value != this[i + 1].Value)
+                {
+                    firstValueIdx = lastValueIdx + 1;
+                }
             }
             HighCard = Highest;
-            return lastValueIdx;
+            return counter;
         }
         private bool IsSameColor(out PlayingCard HighCard)
         {
             int counter = 0;
             HighCard = Highest;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 4; i++)
             {
-                if (this[i] == this[4])
+                if (this[i] == this[i + 1])
                 {
                     counter++;
                 }
@@ -58,11 +62,11 @@
         private bool IsConsecutive(out PlayingCard HighCard)
         {
             HighCard = Highest;
-            var prevValue = HighCard;
+            var prevValue = this[0];
             for (int i = 1; i < 5; i++)
             {
-                if (HighCard.Value == prevValue.Value + 1)
-                    prevValue = HighCard;
+                if (this[i].Value == prevValue.Value + 1)
+                    prevValue = this[i];
                 else
                     return false;
             }
@@ -86,7 +90,23 @@
                 return false;
             }
         }
-        private bool IsFullHouse => false;
+        private bool IsFullHouse
+        {
+            get
+            {
+                int lastValueIdx;
+                int lastValueIdx2;
+                int counter;
+                int counter2;
+                NrSameValue(0, out lastValueIdx, out counter, out _rankHigh);
+                NrSameValue(lastValueIdx + 1, out lastValueIdx2, out counter2, out _rankHigh);
+                if (counter == 1 && counter == 2 || counter == 2 && counter2 == 1)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
         private bool IsFlush => IsSameColor(out _rankHigh);
         private bool IsStraight => IsConsecutive(out _rankHigh);
         private bool IsThreeOfAKind
@@ -139,15 +159,15 @@
         public PokerRank DetermineRank()
         {
             ClearRank();
-            if (IsRoyalFlush) return PokerRank.RoyalFlush;
-            if (IsStraightFlush) return PokerRank.StraightFlush;
-            if (IsFourOfAKind) return PokerRank.FourOfAKind;
-            if (IsFullHouse) return PokerRank.FullHouse;
-            if (IsFlush) return PokerRank.Flush;
-            if (IsStraight) return PokerRank.Straight;
-            if (IsThreeOfAKind) return PokerRank.ThreeOfAKind;
-            if (IsTwoPair) return PokerRank.TwoPair;
-            if (IsPair) return PokerRank.Pair;
+            if (IsRoyalFlush == true) return PokerRank.RoyalFlush;
+            if (IsStraightFlush == true) return PokerRank.StraightFlush;
+            if (IsFourOfAKind == true) return PokerRank.FourOfAKind;
+            if (IsFullHouse == true) return PokerRank.FullHouse;
+            if (IsFlush == true) return PokerRank.Flush;
+            if (IsStraight == true) return PokerRank.Straight;
+            if (IsThreeOfAKind == true) return PokerRank.ThreeOfAKind;
+            if (IsTwoPair == true) return PokerRank.TwoPair;
+            if (IsPair == true) return PokerRank.Pair;
             else return PokerRank.Unknown;
         }
 

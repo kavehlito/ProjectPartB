@@ -16,7 +16,7 @@ namespace ProjectPartB_B2
             Console.WriteLine(myDeck);
 
             Console.WriteLine($"\nA shuffled deck with {myDeck.Count} cards:");
-            // myDeck.Shuffle();
+            //myDeck.Shuffle();
             Console.WriteLine(myDeck);
 
             PokerHand Player = new PokerHand();
@@ -30,8 +30,7 @@ namespace ProjectPartB_B2
                     Player.Add(myDeck.RemoveTopCard());
                 }
                 Console.WriteLine($"Player Hand: {Player}");
-                Player.DetermineRank();
-                Console.WriteLine($"Rank is {Player.Rank} with the rank-high-card {Player.Highest}");
+                Console.WriteLine($"Rank is {Player.DetermineRank()} with the rank-high-card {Player.Highest}");
                 Console.WriteLine($"The Deck has {myDeck.Count} cards left\n");
                 Player.Clear();
             }
